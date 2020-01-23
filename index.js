@@ -1,4 +1,6 @@
-const Slopes = require("slopes");
+const Slopes = require("slopes").default;
+console.log(Slopes);
+
 const BinTools = require("slopes/src/utils/bintools");
 const Ins = require("slopes/src/apis/avm/inputs");
 const Keys = require("slopes/src/apis/avm/keychain");
@@ -41,3 +43,4 @@ let sigidx = new Types.SigIdx();
 let sig = new Types.Signature();
 
 let utc = Types.UnixNow();
+
