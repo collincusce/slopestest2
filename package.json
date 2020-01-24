@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "slopes": "^1.0.14"
+    "buffer": "^5.4.3",
+    "slopes": "^1.1.0"
   },
   "devDependencies": {}
 }

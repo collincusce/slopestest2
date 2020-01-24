@@ -1,46 +1,51 @@
-const Slopes = require("slopes").default;
-console.log(Slopes);
+const slopes = require("slopes");
 
-const BinTools = require("slopes/src/utils/bintools");
-const Ins = require("slopes/src/apis/avm/inputs");
-const Keys = require("slopes/src/apis/avm/keychain");
-const Outs = require("slopes/src/apis/avm/outputs");
-const Txs = require("slopes/src/apis/avm/tx");
-const Types = require("slopes/src/apis/avm/types");
-const UTXOs = require("slopes/src/apis/avm/utxos");
-const Buffer = require('buffer/');
+const Buffer = require('buffer/').Buffer;
 
-let bintools = BinTools.getInstance();
+let bintools = slopes.BinTools.getInstance();
+console.log(bintools.copyFrom(Buffer.from("abcd", "utf8")).toString())
+let utxo = new slopes.UTXO();
+console.log(utxo);
 
-let s = new Slopes("localhost", 9650);
+let s = new slopes.Slopes("localhost", 9650);
 
-let utxoset = new UTXOs.UTXOSet();
+let utxoset = new slopes.UTXOSet();
 
 let u = [];
 
-u.push(new UTXOs.UTXO());
+u.push(new slopes.UTXO());
+console.log(u);
 
-let input = new Ins.Input();
+let input = new slopes.Input();
+console.log(input);
 
-let kp = new Keys.AVMKeyPair();
+let kp = new slopes.AVMKeyPair;
+console.log(kp);
 
-let kc = new Keys.AVMKeyChain();
+let kc = new slopes.AVMKeyChain();
+console.log(kc);
 
-let outputCA = new Outs.OutCreateAsset();
+let outputPay = new slopes.OutPayment(bintools.b58ToBuffer("madeup1"));
+console.log(outputPay);
 
-let outputPay = new Outs.OutPayment(bintools.b58ToBuffer("madeup1"));
+let outputTOL = new slopes.OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
+console.log(outputTOL);
 
-let outputTOL = new Outs.OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
+let utx = new slopes.TxUnsigned();
+console.log(utx);
 
-let utx = new Txs.TxUnsigned();
+let tx = new slopes.Tx();
+console.log(tx);
 
-let tx = new Txs.Tx();
+let addr = new slopes.Address();
+console.log(addr);
 
-let addr = new Types.Address();
+let sigidx = new slopes.SigIdx();
+console.log(sigidx);
 
-let sigidx = new Types.SigIdx();
+let sig = new slopes.Signature();
+console.log(sig);
 
-let sig = new Types.Signature();
-
-let utc = Types.UnixNow();
+let utc = slopes.UnixNow();
+console.log(utc.toNumber());
 
